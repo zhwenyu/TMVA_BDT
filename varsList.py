@@ -3,39 +3,74 @@
 #input variables
 varList = {}
 
-inputDir = '/mnt/hadoop/store/group/bruxljm/FWLJMET102X_1lep2017_Oct2019_4t_10072020_step2/nominal/'
+#inputDir = '/mnt/hadoop/store/group/bruxljm/FWLJMET102X_1lep2017_Oct2019_4t_08242021_step2/nominal/'
+inputDir = '/mnt/hadoop/store/group/bruxljm/FWLJMET102X_1lep2016_Jan2021_4t_08242021_step2/nominal/' # 2016
+
+bkg1 = 'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttbb_hadd.root'
+bkg2 = 'ttHTobb_M125_TuneCP5_13TeV-powheg-pythia8_hadd.root' 
 
 bkg = [
+## 2016
+#'TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_tt1b_hadd.root',
+#'TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_tt2b_hadd.root',
+#'TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_ttbb_hadd.root',
+#'TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_ttcc_hadd.root',
+#'TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_ttjj_hadd.root',
+#'TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_tt1b_hadd.root',
+#'TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_tt2b_hadd.root',
+#'TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_ttbb_hadd.root',
+#'TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_ttcc_hadd.root',
+#'TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_ttjj_hadd.root',
+#'TTToSemiLepton_HT500Njet9_TuneCP5_PSweights_13TeV-powheg-pythia8_tt1b_hadd.root',
+#'TTToSemiLepton_HT500Njet9_TuneCP5_PSweights_13TeV-powheg-pythia8_tt2b_hadd.root',
+#'TTToSemiLepton_HT500Njet9_TuneCP5_PSweights_13TeV-powheg-pythia8_ttbb_hadd.root',
+#'TTToSemiLepton_HT500Njet9_TuneCP5_PSweights_13TeV-powheg-pythia8_ttcc_hadd.root',
+#'TTToSemiLepton_HT500Njet9_TuneCP5_PSweights_13TeV-powheg-pythia8_ttjj_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_tt1b_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_tt2b_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttbb_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttcc_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttjj_1_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttjj_2_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttjj_3_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttjj_4_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttjj_5_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT500Njet9_tt1b_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT500Njet9_tt2b_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT500Njet9_ttbb_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT500Njet9_ttcc_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT500Njet9_ttjj_hadd.root',
+
 ### 2017 
-'TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_tt1b_hadd.root',
-'TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_tt2b_hadd.root',
+#'TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_tt1b_hadd.root',
+#'TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_tt2b_hadd.root',
 'TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_ttbb_hadd.root',
-'TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_ttcc_hadd.root',
-'TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_ttjj_hadd.root',
-'TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_tt1b_hadd.root',
-'TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_tt2b_hadd.root',
+#'TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_ttcc_hadd.root',
+#'TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_ttjj_hadd.root',
+#'TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_tt1b_hadd.root',
+#'TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_tt2b_hadd.root',
 'TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_ttbb_hadd.root',
-'TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_ttcc_hadd.root',
-'TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_ttjj_hadd.root',
-'TTToSemiLepton_HT500Njet9_TuneCP5_PSweights_13TeV-powheg-pythia8_tt1b_hadd.root',
-'TTToSemiLepton_HT500Njet9_TuneCP5_PSweights_13TeV-powheg-pythia8_tt2b_hadd.root',
+#'TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_ttcc_hadd.root',
+#'TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_ttjj_hadd.root',
+#'TTToSemiLepton_HT500Njet9_TuneCP5_PSweights_13TeV-powheg-pythia8_tt1b_hadd.root',
+#'TTToSemiLepton_HT500Njet9_TuneCP5_PSweights_13TeV-powheg-pythia8_tt2b_hadd.root',
 'TTToSemiLepton_HT500Njet9_TuneCP5_PSweights_13TeV-powheg-pythia8_ttbb_hadd.root',
-'TTToSemiLepton_HT500Njet9_TuneCP5_PSweights_13TeV-powheg-pythia8_ttcc_hadd.root',
-'TTToSemiLepton_HT500Njet9_TuneCP5_PSweights_13TeV-powheg-pythia8_ttjj_hadd.root',
-'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_tt1b_hadd.root',
-'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_tt2b_hadd.root',
+#'TTToSemiLepton_HT500Njet9_TuneCP5_PSweights_13TeV-powheg-pythia8_ttcc_hadd.root',
+#'TTToSemiLepton_HT500Njet9_TuneCP5_PSweights_13TeV-powheg-pythia8_ttjj_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_tt1b_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_tt2b_hadd.root',
 'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttbb_hadd.root',
-'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttcc_hadd.root',
-'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttjj_1_hadd.root',
-'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttjj_2_hadd.root',
-'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttjj_3_hadd.root',
-'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttjj_4_hadd.root',
-'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttjj_5_hadd.root',
-'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT500Njet9_tt1b_hadd.root',
-'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT500Njet9_tt2b_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttcc_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttjj_1_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttjj_2_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttjj_3_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttjj_4_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT0Njet0_ttjj_5_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT500Njet9_tt1b_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT500Njet9_tt2b_hadd.root',
 'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT500Njet9_ttbb_hadd.root',
-'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT500Njet9_ttcc_hadd.root',
-'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT500Njet9_ttjj_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT500Njet9_ttcc_hadd.root',
+#'TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_HT500Njet9_ttjj_hadd.root',
 
 
 ## 2018
@@ -66,7 +101,9 @@ bkg = [
 #'TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_HT500Njet9_ttcc_hadd.root',
 #'TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_HT500Njet9_ttjj_hadd.root',
 
-
+## ttH 2016-2018
+#'ttHTobb_M125_TuneCP5_13TeV-powheg-pythia8_hadd.root',
+#'ttHToNonbb_M125_TuneCP5_13TeV-powheg-pythia8_hadd.root',
  ]
 
 #[<variable in trees>, <variable name for axes and titles>, <unit>]
@@ -192,14 +229,11 @@ varList['CombIpRank'] = [  # 61 var importance ranking
 varList['SepRank4j73vars2017year'] = [ # Mar30 run
 ]
 
-varList['SepRank4j61vars2017year'] = [ # Mar30 run
-]
-
-varList['SepRank6j73vars2017year'] = [ # May07 run 
-#['thirdcsvb_bb', 'DeepCSV(3rdDeepCSVJet)', ''],
-#['fourthcsvb_bb', 'DeepCSV(4thDeepCSVJet)', ''],
-##['NJetsCSV_MultiLepCalc', 'bjet multiplicity', ''],
-['NJetsCSVwithSF_MultiLepCalc', 'bjet multiplicity', ''],
+varList['SepRank6j73vars2017year'] = [ # 2020May07 run 
+['thirdcsvb_bb', 'DeepCSV(3rdDeepCSVJet)', ''],
+['fourthcsvb_bb', 'DeepCSV(4thDeepCSVJet)', ''],
+['NJetsCSV_MultiLepCalc', 'bjet multiplicity', ''],
+#['NJetsCSVwithSF_MultiLepCalc', 'bjet multiplicity', ''],
 ['NJets_JetSubCalc', 'AK4 jet multiplicity', ''],
 ['BDTtrijet2', 'trijet2 discriminator', ''],
 ['AK4HTpMETpLepPt', 'S_{T}', 'GeV'],
@@ -232,7 +266,7 @@ varList['SepRank6j73vars2017year'] = [ # May07 run
 ['aveBBdr', 'ave[#DeltaR(b,b)]', ''],
 ['FW_momentum_6', '6^{th} FW moment', 'GeV'],
 ['deltaEta_maxBB', 'max[#Delta#eta(b,b)]', ''],
-#['HOTGoodTrijet2_csvJetnotdijet', 'HOTGoodTrijet2_csvJetnotdijet', ''],
+['HOTGoodTrijet2_csvJetnotdijet', 'HOTGoodTrijet2_csvJetnotdijet', ''],
 ['centrality', 'Centrality', ''],
 ['Aplanarity', 'Aplanarity', 'Aplanarity'],
 ['MT2bb', 'MT2bb', 'GeV'],
@@ -250,13 +284,13 @@ varList['SepRank6j73vars2017year'] = [ # May07 run
 ['FW_momentum_2', '2^{nd} FW moment', 'GeV'],
 ['mass_lepJets2', 'M(l,j_{3})', 'GeV'],
 ['lepDR_minBBdr', '#DeltaR(l,bb) with min[#DeltaR(b,b)]', ''],
-#['csvJet3', 'DeepCSV(3rdPtJet)', ''],
+['csvJet3', 'DeepCSV(3rdPtJet)', ''],
 ['mass_lepJets1', 'M(l,j_{2})', 'GeV'],
 ['BDTtrijet4', 'trijet4 discriminator', ''],
 ['deltaR_lepbJetInMinMlb', '#DeltaR(l,b) with min M(l, b)', ''],
-#['csvJet4', 'DeepCSV(4thPtJet)', ''],
-#['aveCSVpt', 'p_{T} weighted CSVv2', ''], #csv
-#['HOTGoodTrijet1_csvJetnotdijet', 'HOTGoodTrijet1_csvJetnotdijet', ''],
+['csvJet4', 'DeepCSV(4thPtJet)', ''],
+['aveCSVpt', 'p_{T} weighted CSV', ''], #csv
+['HOTGoodTrijet1_csvJetnotdijet', 'HOTGoodTrijet1_csvJetnotdijet', ''],
 ['FW_momentum_3', '3^{rd} FW moment', 'GeV'],
 ['FW_momentum_0', '0^{th} FW moment', 'GeV'],
 ['mass_minBBdr', 'M(b,b) with min[#DeltaR(b,b)]', 'GeV'],
@@ -270,6 +304,83 @@ varList['SepRank6j73vars2017year'] = [ # May07 run
 ['deltaR_lepJetInMinMljet', '#DeltaR(l,j) with min M(l, j)', ''],
 ['mass_lepJets0', 'M(l,j_{1})', 'GeV'],
 ['deltaPhi_lepJetInMinMljet', '#DeltaPhi(l,j) with min M(l, j)', '']
+]
+
+
+varList['SepRank6j73vars2017Run'] = [ # 2021May
+['NJets_JetSubCalc', 'AK4 jet multiplicity', ''],
+['fourthcsvb_bb', 'DeepCSV(4thDeepCSVJet)', ''],
+['thirdcsvb_bb', 'DeepCSV(3rdDeepCSVJet)', ''],
+['sixthJetPt', 'p_{T}(j_{6})', 'GeV'],
+['ratio_HTdHT4leadjets', 'HT/HT(4 leading jets)', ''],
+['BDTtrijet2', 'trijet2 discriminator', ''],
+['AK4HTpMETpLepPt', 'S_{T}', 'GeV'],
+['AK4HT', 'H_{T}', 'GeV'],
+['fifthJetPt', 'p_{T}(j_{5})', 'GeV'],
+['NJetsCSV_MultiLepCalc', 'bjet multiplicity', ''],
+['PtFifthJet', '5^{th} jet p_{T}', 'GeV'],
+['hemiout', 'Hemiout', 'GeV'],
+['HT_2m', 'HTwoTwoPtBjets', 'GeV'],
+['BDTtrijet3', 'trijet3 discriminator', ''],
+['M_allJet_W', 'M(allJets, leptoninc W)', 'GeV'],
+['HT_bjets', 'HT(bjets)', 'GeV'],
+['FW_momentum_6', '6^{th} FW moment', 'GeV'],
+['secondJetPt', 'p_{T}(j_{2})', 'GeV'],
+['NresolvedTops1pFake', 'resolvedTop multiplicity', ''],
+['FW_momentum_5', '5^{th} FW moment', 'GeV'],
+['mass_lepBJet0', 'M(l,b_{1})', 'GeV'],
+['MT_lepMet', 'M_{T}(lep,E_{T}^{miss})', 'GeV'],
+['NJetsTtagged', 'top multiplicity', ''],
+['FW_momentum_4', '4^{th} FW moment', 'GeV'],
+['HOTGoodTrijet2_pTratio', 'HOTGoodTrijet2_pTratio', ''],
+['HOTGoodTrijet2_dRtrijetJetnotdijet', 'HOTGoodTrijet2_dRtrijetJetnotdijet', ''],
+['HOTGoodTrijet2_dijetmass', 'HOTGoodTrijet2_dijetmass', 'GeV'],
+['HOTGoodTrijet2_mass', 'HOTGoodTrijet2_mass', 'GeV'],
+['deltaR_minBB', 'min[#DeltaR(b,b)]', ''],
+['HOTGoodTrijet2_dRtridijet', 'HOTGoodTrijet2_dRtridijet', ''],
+['HOTGoodTrijet2_csvJetnotdijet', 'HOTGoodTrijet2_csvJetnotdijet', ''],
+['BDTtrijet1', 'trijet1 discriminator', ''],
+['Aplanarity', 'Aplanarity', 'Aplanarity'],
+['mass_maxBBmass', 'max[M(b,b)]', 'GeV'],
+['corr_met_MultiLepCalc', 'E_{T}^{miss}', 'GeV'],
+['theJetLeadPt', 'p_{T}(j_{1})', 'GeV'],
+['BJetLeadPt', 'p_{T}(b_{1})', 'GeV'],
+['mass_lepBJet_mindr', 'M(l,b) with min[#DeltaR(l,b)]', 'GeV'],
+['Sphericity', 'Sphericity', 'Sphericity'],
+['HOTGoodTrijet1_mass', 'HOTGoodTrijet1_mass', 'GeV'],
+['HOTGoodTrijet1_dijetmass', 'HOTGoodTrijet1_dijetmass', 'GeV'],
+['FW_momentum_2', '2^{nd} FW moment', 'GeV'],
+['HOTGoodTrijet1_dRtridijet', 'HOTGoodTrijet1_dRtridijet', ''],
+['HOTGoodTrijet1_pTratio', 'HOTGoodTrijet1_pTratio', ''],
+['HOTGoodTrijet1_dRtrijetJetnotdijet', 'HOTGoodTrijet1_dRtrijetJetnotdijet', ''],
+['FW_momentum_3', '3^{rd} FW moment', 'GeV'],
+['mass_lepJets2', 'M(l,j_{3})', 'GeV'],
+['mass_lepJets1', 'M(l,j_{2})', 'GeV'],
+['BDTtrijet4', 'trijet4 discriminator', ''],
+['aveBBdr', 'ave[#DeltaR(b,b)]', ''],
+['centrality', 'Centrality', ''],
+['HOTGoodTrijet1_csvJetnotdijet', 'HOTGoodTrijet1_csvJetnotdijet', ''],
+['deltaEta_maxBB', 'max[#Delta#eta(b,b)]', ''],
+['aveCSVpt', 'p_{T} weighted CSV', ''],
+['csvJet3', 'DeepCSV(3rdPtJet)', ''],
+['MT2bb', 'MT2bb', 'GeV'],
+['leptonPt_MultiLepCalc', 'p_{T}(lep)', 'GeV'],
+['deltaR_lepBJet_maxpt', '#DeltaR(l,b)] with max[p_{T}(l,b)]', ''],
+['csvJet4', 'DeepCSV(4thPtJet)', ''],
+['NJetsWtagged', 'W multiplicity', ''],
+['mass_maxJJJpt', 'M(jjj) with max[p_{T}(jjj)]', 'GeV'],
+['mass_lepJets0', 'M(l,j_{1})', 'GeV'],
+['mass_minLLdr', 'M(j,j) with min[#DeltaR(j,j)], j #neq b', 'GeV'],
+['FW_momentum_1', '1^{st} FW moment', 'GeV'],
+['lepDR_minBBdr', '#DeltaR(l,bb) with min[#DeltaR(b,b)]', ''],
+['deltaR_lepJetInMinMljet', '#DeltaR(l,j) with min M(l, j)', ''],
+['deltaR_lepbJetInMinMlb', '#DeltaR(l,b) with min M(l, b)', ''],
+['deltaPhi_lepJetInMinMljet', '#DeltaPhi(l,j) with min M(l, j)', ''],
+['mass_minBBdr', 'M(b,b) with min[#DeltaR(b,b)]', 'GeV'],
+['minDR_lepBJet', 'min[#DeltaR(l,b)]', ''],
+['deltaPhi_lepbJetInMinMlb', '#DeltaPhi(l,b) with min M(l, b)', ''],
+['minMleppBjet', 'min[M(l,b)]', 'GeV'],
+['FW_momentum_0', '0^{th} FW moment', 'GeV']
 ]
 
 varList['ImpRank6j73vars2017year'] = [
@@ -451,10 +562,11 @@ for ind in range(20, 73, 1):
   varList['DNNRank6j73vars2018year'+ str(ind)+ 'top'] = varList['DNNRank6j73vars2018year'][:ind]
   varList['ImpRank6j73vars2017year'+ str(ind)+ 'top'] = varList['ImpRank6j73vars2017year'][:ind]
   varList['ImpRank6j73vars2018year'+ str(ind)+ 'top'] = varList['ImpRank6j73vars2018year'][:ind]
+  varList['SepRank6j73vars2017Run'+ str(ind)+ 'top'] = varList['SepRank6j73vars2017Run'][:ind]
 
-for ind in range(20, 61, 1):
-  varList['SepRank6j61vars2017year'+ str(ind)+ 'top'] = varList['SepRank6j61vars2017year'][:ind]
-  varList['SepRank6j61vars2018year'+ str(ind)+ 'top'] = varList['SepRank6j61vars2018year'][:ind]
-  varList['SepRank4j61vars2017year'+ str(ind)+ 'top'] = varList['SepRank4j61vars2017year'][:ind]
+#for ind in range(20, 61, 1):
+#  varList['SepRank6j61vars2017year'+ str(ind)+ 'top'] = varList['SepRank6j61vars2017year'][:ind]
+#  varList['SepRank6j61vars2018year'+ str(ind)+ 'top'] = varList['SepRank6j61vars2018year'][:ind]
+#  varList['SepRank4j61vars2017year'+ str(ind)+ 'top'] = varList['SepRank4j61vars2017year'][:ind]
 
 varList['Comb61andtrij'] += varList['CombIpRank']

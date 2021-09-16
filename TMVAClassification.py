@@ -41,12 +41,12 @@ import varsList
 # --------------------------------------------
 #weight and cut strings below are used for both background and signals!
 weightStrC = "triggerXSF*pileupWeight*lepIdSF*EGammaGsfSF*isoSF*L1NonPrefiringProb_CommonCalc*MCWeight_MultiLepCalc/abs(MCWeight_MultiLepCalc)"
-weightStrC = weightStrC+"*tthfWeight*btagCSVWeight*btagCSVRenormWeight"
+weightStrC = weightStrC+"*tthfWeight*btagCSVWeight*btagCSV2DWeight_HTnj"
 weightStrS = weightStrC+"*xsecEff"
 weightStrB = weightStrC+"*xsecEff"
 
 #### NJetsCSVwithSF_MultiLepCalc
-cutStrC = "(NJets_JetSubCalc >= 6 && NJetsCSVwithSF_MultiLepCalc >= 2) && ((leptonPt_MultiLepCalc > 20 && isElectron) || (leptonPt_MultiLepCalc > 20 && isMuon)) && (corr_met_MultiLepCalc > 60) && (MT_lepMet > 60) && (minDR_lepJet > 0.4) && (AK4HT > 500) && (DataPastTriggerX == 1) && (MCPastTriggerX == 1)"
+cutStrC = "(NJets_JetSubCalc >= 6 && NJetsCSV_MultiLepCalc >= 2) && ((leptonPt_MultiLepCalc > 20 && isElectron) || (leptonPt_MultiLepCalc > 20 && isMuon)) && (corr_met_MultiLepCalc > 60) && (MT_lepMet > 60) && (minDR_lepJet > 0.4) && (AK4HT > 500) && (DataPastTriggerX == 1) && (MCPastTriggerX == 1)"
 cutStrS = cutStrC+" && ( isTraining == 1 || isTraining == 2 )"
 cutStrB = cutStrC
 
@@ -135,7 +135,7 @@ def main():
 
     varList = varsList.varList[varListKey]
     nVars = str(len(varList))+'vars'
-    note = '_6j_year2017_rmCSV'
+    note = '_6j_year2016_NJetsCSV_ttbb'
     Note=methods+'_'+varListKey+'_'+nVars+'_mDepth'+mDepth+note
     outfname = "dataset2021/weights/TMVA_"+Note+".root"
     # Print methods
@@ -192,8 +192,10 @@ def main():
     # input variables, the response values of all trained MVAs, and the spectator variables
 
     inputDir = varsList.inputDir
-    infname = "TTTT_TuneCP5_PSweights_13TeV-amcatnlo-pythia8_hadd.root" # 2017
-#    infname = "TTTT_TuneCP5_13TeV-amcatnlo-pythia8_hadd.root" # 2018
+    infname = "TTTT_TuneCP5_PSweights_13TeV-amcatnlo-pythia8_correctnPartonsInBorn_hadd.root" # 2016 2017
+#    infname = "TTTT_TuneCP5_13TeV-amcatnlo-pythia8_combined_hadd.root" # 2018 new
+#    infname = "TTTT_TuneCP5_PSweights_13TeV-amcatnlo-pythia8_hadd.root" # 2017 old
+#    infname = "TTTT_TuneCP5_13TeV-amcatnlo-pythia8_hadd.root" # 2018 old
     iFileSig = TFile.Open(inputDir+infname)
     sigChain = iFileSig.Get("ljmet")
 
