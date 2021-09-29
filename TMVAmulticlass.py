@@ -135,7 +135,7 @@ def main():
 
     varList = varsList_multiclass.varList[varListKey]
     nVars = str(len(varList))+'vars'
-    note = '_6j_year2016_NJetsCSV_multi'
+    note = '_6j_year2017_NJetsCSV_multi'
     Note=methods+'_'+varListKey+'_'+nVars+'_mDepth'+mDepth+note
     outfname = "dataset2021/weights/TMVA_"+Note+".root"
     # Print methods
@@ -187,26 +187,27 @@ def main():
         if iVar[0]=='NJets_JetSubCalc': loader.AddVariable(iVar[0],iVar[1],iVar[2],'I')
         else: loader.AddVariable(iVar[0],iVar[1],iVar[2],'F')
 
-    myCutSig = TCut( cutStrS )
+    ## myCutSig = TCut( cutStrS )
     myCutBkg = TCut( cutStrB )
     # You can add so-called "Spectator variables", which are not used in the MVA training, 
     # but will appear in the final "TestTree" produced by TMVA. This TestTree will contain the 
     # input variables, the response values of all trained MVAs, and the spectator variables
 
     inputDir = varsList_multiclass.inputDir
-    infname = "TTTT_TuneCP5_PSweights_13TeV-amcatnlo-pythia8_correctnPartonsInBorn_hadd.root" # 2016 2017
+#    infname = "TTTT_TuneCP5_PSweights_13TeV-amcatnlo-pythia8_correctnPartonsInBorn_hadd.root" # 2016 2017
 #    infname = "TTTT_TuneCP5_13TeV-amcatnlo-pythia8_combined_hadd.root" # 2018 new
 #    infname = "TTTT_TuneCP5_PSweights_13TeV-amcatnlo-pythia8_hadd.root" # 2017 old
 #    infname = "TTTT_TuneCP5_13TeV-amcatnlo-pythia8_hadd.root" # 2018 old
+    infname = "TTTT_train_2017.root" # train and test only
     iFileSig = TFile.Open(inputDir+infname)
     sigTree = iFileSig.Get("ljmet")
     loader.AddTree(sigTree, "Signal")
 
-    bkgFileList = {'ttbar': [], 'ttH': []} 
-    bkgTreeList = {'ttbar': [], 'ttH': []}
+    bkgFileList = {'ttbar': [], 'ttH': [], 'ttbb': []} 
+    bkgTreeList = {'ttbar': [], 'ttH': [], 'ttbb': []}
     bkg_tt = varsList_multiclass.bkg_tt
     bkg_ttH = varsList_multiclass.bkg_ttH
-
+    bkg_ttbb = varsList_multiclass.bkg_ttbb
 
     ## multiple bkg classes
     bkgs = None
@@ -215,6 +216,8 @@ def main():
             bkgs = bkg_tt 
         elif b == 'ttH':
             bkgs = bkg_ttH
+        elif b == 'ttbb':
+            bkgs = bkg_ttbb
         for i in range(len(bkgs)):
             bkgFileList[b].append(TFile.Open(inputDir + bkgs[i]))
             print inputDir + bkgs[i] 
@@ -245,12 +248,13 @@ def main():
     loader.SetWeightExpression( weightStrS , "Signal")
     loader.SetWeightExpression( weightStrB , "ttbar")
     loader.SetWeightExpression( weightStrB , "ttH")
+    loader.SetWeightExpression( weightStrB , "ttbb")
 
     # Here, the relevant variables are copied over in new, slim trees that are
     # used for TMVA training and testing
     # "SplitMode=Random" means that the input events are randomly shuffled before
     # splitting them into training and test samples
-    loader.PrepareTrainingAndTestTree( myCutSig,
+    loader.PrepareTrainingAndTestTree( myCutBkg,
                                         "SplitMode=Random:NormMode=NumEvents:!V" ) # nEvents 
 
     # --------------------------------------------------------------------------------------------------
