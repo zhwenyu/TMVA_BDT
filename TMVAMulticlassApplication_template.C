@@ -96,15 +96,23 @@ void TMVAMulticlassApplication( TString myMethodList = "", TString inputFile="",
    theTree->SetBranchAddress( "<var>", &var<number>);
 
    // output file and new branch 
-   TFile *target  = new TFile( outputFile,"RECREATE" );
+   TFile *target  = new TFile(outputFile, "RECREATE");
    target->cd();
    TTree *newTree = theTree->CloneTree(0);   
-   Float_t BDTG; TBranch *b_BDTG = newTree->Branch("BDTG", &BDTG, "BDTG/F");
+
+   std::vector<Float_t> BDTGs(class_names.size());
+   std::vector<TBranch *> b_BDTGs(class_names.size());
+   for (UInt_t cls = 0; cls < class_names.size(); cls++) { 
+       b_BDTGs[cls] = newTree->Branch("BDTG_" + class_names[cls], &BDTGs[cls]);
+       std::cout << b_BDTGs[cls] << " new branch \n"; 
+   } 
+
  
    std::cout << "--- Processing: " << theTree->GetEntries() << " events" << std::endl;
    TStopwatch sw;
    sw.Start();
- 
+
+   //// event loop  
    for (Long64_t ievt=0; ievt<theTree->GetEntries();ievt++) {
      // if (ievt > 10) break; // debug 
 
@@ -113,9 +121,10 @@ void TMVAMulticlassApplication( TString myMethodList = "", TString inputFile="",
       }
       theTree->GetEntry(ievt);
 
-      BDTG = (reader->EvaluateMulticlass( "BDTG method" ))[0] ;
-      std::cout << " debug --- "; 
-      std::cout << (reader->EvaluateMulticlass( "BDTG method" )).size() << std::endl; // debug 
+      for (UInt_t cls = 0; cls < class_names.size(); cls++) {
+          BDTGs[cls] = (reader->EvaluateMulticlass( "BDTG method" ))[cls] ;
+      }
+      // std::cout << (reader->EvaluateMulticlass( "BDTG method" )).size() << std::endl; // debug 
       newTree->Fill(); 
 
    }
